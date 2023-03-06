@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
-  state = { };
-
   render() {
-    const {
-      cardName,
+    const { cardState: { cardName = '',
       cardDescription,
       cardAttr1,
       cardAttr2,
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo,
-    } = this.props;
+      cardTrunfo } } = this.props;
     return (
       <>
         <span data-testid="name-card">{cardName}</span>
@@ -32,13 +28,15 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
+  cardState: PropTypes.shape({
+    cardName: PropTypes.string,
+    cardDescription: PropTypes.string,
+    cardAttr1: PropTypes.string,
+    cardAttr2: PropTypes.string,
+    cardAttr3: PropTypes.string,
+    cardImage: PropTypes.string,
+    cardRare: PropTypes.string,
+    cardTrunfo: PropTypes.bool,
+  }).isRequired,
 };
 export default Card;
