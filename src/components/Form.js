@@ -2,22 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
-  state = { };
-
   render() {
     const {
-      cardState: {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
-        cardTrunfo,
-        // hasTrunfo,
-        isSaveButtonDisabled,
-      },
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
