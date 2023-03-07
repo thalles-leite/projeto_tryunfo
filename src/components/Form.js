@@ -15,8 +15,8 @@ class Form extends Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      hasTrunfo,
     } = this.props;
-
     return (
       <>
         <label>
@@ -93,13 +93,16 @@ class Form extends Component {
         </label>
         <label>
           Super Trunfo?
-          <input
-            type="checkbox"
-            data-testid="trunfo-input"
-            name="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
+          {
+            !hasTrunfo ? <input
+              type="checkbox"
+              data-testid="trunfo-input"
+              name="cardTrunfo"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+              : <span>Você já tem um Super Trunfo em seu baralho</span>
+          }
         </label>
         <button
           data-testid="save-button"
