@@ -3,14 +3,30 @@ import PropTypes from 'prop-types';
 
 class CardList extends Component {
   render() {
-    const { cards, onRemoveButtonClick, rareFilter } = this.props;
-    let filteredCards = '';
-    if (rareFilter === 'todas') {
-      filteredCards = cards;
+    const {
+      cards,
+      onRemoveButtonClick,
+      rareFilter,
+      nameFilter,
+      trunfoFilter,
+    } = this.props;
+
+    let filteredCards = cards;
+
+    if (!trunfoFilter) {
+      if (nameFilter !== '') {
+        filteredCards = cards
+          .filter(({ cardName }) => cardName.includes(nameFilter));
+      }
+
+      if (rareFilter !== 'todas') {
+        filteredCards = cards
+          .filter(({ cardRare }) => cardRare === rareFilter);
+      }
     } else {
-      console.log(rareFilter);
-      filteredCards = cards.filter(({ cardRare }) => cardRare === rareFilter);
+      filteredCards = cards.filter(({ cardTrunfo }) => cardTrunfo === true);
     }
+
     return (
       <>
         <h1>Cartas</h1>
@@ -60,5 +76,7 @@ CardList.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.string).isRequired,
   onRemoveButtonClick: PropTypes.func.isRequired,
   rareFilter: PropTypes.string.isRequired,
+  nameFilter: PropTypes.string.isRequired,
+  trunfoFilter: PropTypes.bool.isRequired,
 };
 export default CardList;

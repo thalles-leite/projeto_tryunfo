@@ -15,8 +15,11 @@ const initialState = {
   cardRare: 'normal',
   cardTrunfo: false,
   rareFilter: 'todas',
+  nameFilter: '',
+  trunfoFilter: false,
   isSaveButtonDisabled: true,
   hasTrunfo: false,
+  trunfoDisable: false,
 };
 class App extends React.Component {
   state = initialState;
@@ -60,11 +63,16 @@ class App extends React.Component {
   };
 
   onChange = ({ target }) => {
-    console.log('mudou');
-    const { name, value } = target;
+    const { name, type, checked } = target;
+    const value = (type === 'checkbox') ? checked : target.value;
     this.setState({
       [name]: value,
     });
+    if (name === 'trunfoFilter' && checked === true) {
+      console.log('agora ta true ');
+      this.setState({
+        trunfoDisable: true });
+    }
   };
 
   verifyValidation = () => {
@@ -115,6 +123,9 @@ class App extends React.Component {
       hasTrunfo,
       cards,
       rareFilter,
+      nameFilter,
+      trunfoFilter,
+      trunfoDisable,
     } = this.state;
 
     return (
@@ -148,11 +159,18 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <br />
-        <Filter cards={ cards } onChange={ this.onChange } />
+        <Filter
+          cards={ cards }
+          onChange={ this.onChange }
+          trunfoDisable={ trunfoDisable }
+        />
         <CardList
           cards={ cards }
           onRemoveButtonClick={ this.onRemoveButtonClick }
           rareFilter={ rareFilter }
+          nameFilter={ nameFilter }
+          trunfoFilter={ trunfoFilter }
+          disableFilter={ this.disableFilter }
         />
 
       </div>
