@@ -3,6 +3,7 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 const initialState = {
+  cards: [],
   cardName: '',
   cardDescription: '',
   cardAttr1: 0,
@@ -24,8 +25,21 @@ class App extends React.Component {
     }, this.verifyValidation);
   };
 
-  resetForm = () => {
-    this.setState(initialState);
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const newCard = { ...this.state };
+    this.setState((currentState) => ({
+      cards: [...currentState.cards, newCard],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      isSaveButtonDisabled: true,
+    }));
   };
 
   verifyValidation = () => {
@@ -90,7 +104,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
-          resetForm={ this.resetForm }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <br />
         <br />
