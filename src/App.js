@@ -5,12 +5,13 @@ import Card from './components/Card';
 const initialState = {
   cardName: '',
   cardDescription: '',
-  cardAttr1: '',
-  cardAttr2: '',
-  cardAttr3: '',
+  cardAttr1: 0,
+  cardAttr2: 0,
+  cardAttr3: 0,
   cardImage: '',
-  cardRare: '',
+  cardRare: 'normal',
   cardTrunfo: false,
+  isSaveButtonDisabled: false,
 };
 class App extends React.Component {
   state = initialState;
@@ -20,6 +21,41 @@ class App extends React.Component {
     const value = (type === 'checkbox') ? checked : target.value;
     this.setState({
       [name]: value,
+    }, this.verifyValidation);
+  };
+
+  verifyValidation = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+    const MINATT = 0;
+    const MAXATT = 90;
+    const MAXSUM = 210;
+
+    const validationText = cardName.length > 0
+    && cardDescription.length > 0
+    && cardImage.length > 0
+    && cardRare.length > 0;
+    // console.log(Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
+    const validationMaxAtt = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3))
+    <= MAXSUM;
+
+    const validationPositiveValues = Number(cardAttr1) >= MINATT
+    && Number(cardAttr1) <= MAXATT
+    && Number(cardAttr2) >= MINATT
+    && Number(cardAttr2) <= MAXATT
+    && Number(cardAttr3) >= MINATT
+    && Number(cardAttr3) <= MAXATT;
+
+    this.setState({
+      isSaveButtonDisabled: validationText
+      && validationMaxAtt
+      && validationPositiveValues,
     });
   };
 
@@ -33,6 +69,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -48,10 +85,11 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <br />
         <br />
-        {console.log(this.state)}
+
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
