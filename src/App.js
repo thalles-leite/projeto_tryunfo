@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import CardList from './components/CardList';
+import Filter from './components/Filter';
 
 const initialState = {
   cards: [],
@@ -13,6 +14,7 @@ const initialState = {
   cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
+  rareFilter: 'todas',
   isSaveButtonDisabled: true,
   hasTrunfo: false,
 };
@@ -54,6 +56,14 @@ class App extends React.Component {
     updateCards.splice(index, 1);
     this.setState({
       cards: updateCards,
+    });
+  };
+
+  onChange = ({ target }) => {
+    console.log('mudou');
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
     });
   };
 
@@ -104,6 +114,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       hasTrunfo,
       cards,
+      rareFilter,
     } = this.state;
 
     return (
@@ -136,10 +147,14 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <br />
+        <Filter cards={ cards } onChange={ this.onChange } />
         <CardList
           cards={ cards }
           onRemoveButtonClick={ this.onRemoveButtonClick }
+          rareFilter={ rareFilter }
         />
+
       </div>
     );
   }

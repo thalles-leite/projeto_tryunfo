@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 
 class CardList extends Component {
   render() {
-    const { cards, onRemoveButtonClick } = this.props;
+    const { cards, onRemoveButtonClick, rareFilter } = this.props;
+    let filteredCards = '';
+    if (rareFilter === 'todas') {
+      filteredCards = cards;
+    } else {
+      console.log(rareFilter);
+      filteredCards = cards.filter(({ cardRare }) => cardRare === rareFilter);
+    }
     return (
       <>
         <h1>Cartas</h1>
-        {cards.map(({ cardName,
+        {filteredCards.map(({ cardName,
           cardDescription,
           cardAttr1,
           cardAttr2,
@@ -52,5 +59,6 @@ class CardList extends Component {
 CardList.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.string).isRequired,
   onRemoveButtonClick: PropTypes.func.isRequired,
+  rareFilter: PropTypes.string.isRequired,
 };
 export default CardList;
