@@ -31,7 +31,6 @@ class App extends React.Component {
     event.preventDefault();
     const newCard = { ...this.state };
     if (newCard.cardTrunfo) this.state.hasTrunfo = true;
-    console.log(newCard.cardTrunfo);
 
     this.setState((currentState) => ({
       cards: [...currentState.cards, newCard],
@@ -44,6 +43,18 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
     }));
+  };
+
+  onRemoveButtonClick = ({ target: { parentNode: { dataset } } }) => {
+    const { index } = dataset;
+    const { cards } = this.state;
+    const { cardTrunfo } = cards[index];
+    if (cardTrunfo) this.setState({ hasTrunfo: false });
+    const updateCards = [...cards];
+    updateCards.splice(index, 1);
+    this.setState({
+      cards: updateCards,
+    });
   };
 
   verifyValidation = () => {
@@ -63,7 +74,6 @@ class App extends React.Component {
     && cardDescription.length > 0
     && cardImage.length > 0
     && cardRare.length > 0;
-    // console.log(Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
     const validationMaxAtt = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3))
     <= MAXSUM;
 
@@ -128,6 +138,7 @@ class App extends React.Component {
         />
         <CardList
           cards={ cards }
+          onRemoveButtonClick={ this.onRemoveButtonClick }
         />
       </div>
     );

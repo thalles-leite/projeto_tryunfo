@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CardList extends Component {
   render() {
-    const { cards } = { ...this.props };
-
+    const { cards, onRemoveButtonClick } = this.props;
     return (
       <>
         <h1>Cartas</h1>
@@ -16,37 +16,41 @@ class CardList extends Component {
           cardRare,
           cardTrunfo,
         }, index) => (
-          <div key={ index }>
+          <div key={ index } data-index={ index }>
             <p>
-              Nome:
               {cardName}
             </p>
             <p>
-              Descrição:
               {cardDescription}
             </p>
             <p>
-              Attr1:
               {cardAttr1}
             </p>
             <p>
-              Attr2:
               {cardAttr2}
             </p>
             <p>
-              Attr3:
               {cardAttr3}
             </p>
             <img src={ cardImage } alt={ cardName } />
             <p>
-              Raridade:
               {cardRare}
             </p>
             {cardTrunfo && <span>Trunfo</span>}
+            <button
+              data-testid="delete-button"
+              onClick={ onRemoveButtonClick }
+            >
+              Excluir
+
+            </button>
           </div>))}
       </>
     );
   }
 }
-
+CardList.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onRemoveButtonClick: PropTypes.func.isRequired,
+};
 export default CardList;
