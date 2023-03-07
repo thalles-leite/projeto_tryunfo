@@ -11,7 +11,7 @@ const initialState = {
   cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
-  isSaveButtonDisabled: false,
+  isSaveButtonDisabled: true,
 };
 class App extends React.Component {
   state = initialState;
@@ -22,6 +22,10 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.verifyValidation);
+  };
+
+  resetForm = () => {
+    this.setState(initialState);
   };
 
   verifyValidation = () => {
@@ -53,9 +57,9 @@ class App extends React.Component {
     && Number(cardAttr3) <= MAXATT;
 
     this.setState({
-      isSaveButtonDisabled: validationText
+      isSaveButtonDisabled: !(validationText
       && validationMaxAtt
-      && validationPositiveValues,
+      && validationPositiveValues),
     });
   };
 
@@ -86,6 +90,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          resetForm={ this.resetForm }
         />
         <br />
         <br />
