@@ -14,17 +14,71 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
     return (
-      <>
-        <span data-testid="name-card">{cardName}</span>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">{cardDescription}</p>
-        <span data-testid="attr1-card">{cardAttr1}</span>
-        <span data-testid="attr2-card">{cardAttr2}</span>
-        <span data-testid="attr3-card">{cardAttr3}</span>
-        <span data-testid="rare-card">{cardRare}</span>
-        {cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>}
+      <section className={ `cardPreviewContainer ${cardRare}` }>
+        {cardTrunfo
+        && (
+          <span className="superTrunfo">
 
-      </>
+            <img className="superTrunfoImg" src="./logo_tryunfo.png" alt="trunfo" />
+          </span>
+        )}
+        <span
+          data-testid="name-card"
+          className="nameCardPreview"
+        >
+          {cardName || 'Nome da Carta'}
+
+        </span>
+        <img
+          data-testid="image-card"
+          src={ cardImage || './noimg.jpg' }
+          alt={ cardName }
+          className="imageCard"
+        />
+        <p
+          data-testid="description-card"
+          className={ `descriptionPreviewCard ${cardRare}` }
+        >
+          {cardDescription}
+
+        </p>
+        <section className="cardAttributes">
+          <section className="lineAttribute">
+            <section className="attrName">Attr01</section>
+            <section
+              data-testid="attr1-card"
+              className="attrVal"
+            >
+              {cardAttr1 || 0}
+
+            </section>
+          </section>
+          <section className="lineAttribute">
+            <section className="attrName">Attr02</section>
+            <section
+              data-testid="attr2-card"
+              className="attrVal"
+            >
+              {cardAttr2 || 0}
+
+            </section>
+          </section>
+          <section className="lineAttribute">
+            <section className="attrName">Attr03</section>
+            <section
+              data-testid="attr3-card"
+              className="attrVal"
+            >
+              {cardAttr3 || 0}
+
+            </section>
+          </section>
+
+        </section>
+        {/* <span data-testid="rare-card">{cardRare}</span> */}
+        {/* {cardTrunfo && <span data-testid="trunfo-card">Super Trunfo</span>} */}
+
+      </section>
     );
   }
 }

@@ -1,15 +1,507 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+button {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: white;
+  background-color: #052727;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+header{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100vw;  
+  background-color: rgb(3, 26, 26);
+}
+.headerLogo{
+  width: 100%;
+  max-width: 5rem;
+}
+
+.apiButtons{
+  display: flex;
+  justify-content: left;
+  padding:  0 10px;  
+}
+.apiPokemonButton,.apiNarutoButton,.apiRickAndMorty{
+  margin: 5px;
+  background-color: #98a300;
+  padding:5px;
+  color: white;
+  border-radius: 10px;  
+}
+.apiNarutoButton{
+background-color: red;
+}
+.apiRickAndMorty{
+  background-color: white;
+  color: black;
+}
+main{
+  display: flex;
+  flex-direction: column;
+}
+.cardRegister{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  
+  border-radius: 20px;
+  padding: 10px;
+  
+}
+
+.registerForm{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(220,220,220);
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 370px;
+  box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.8);
+}
+.cardPreviewContainer{
+  width: 100%;
+  max-width: 370px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: #036B52;
+  height: fit-content;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.8);
+}
+.descAtt{
+  
+  display: flex;
+  justify-content: space-between;
+}
+.attrInputs{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 30%;
+}
+.imageCard{
+  aspect-ratio: 1/1;
+  width: 100%;
+  
+    background-color: white;
+  
+}
+
+.nameCardPreview{
+  
+  background-color: #023031;
+  color: white;
+  padding: 6px;
+  text-align: right;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  
+}
+.descriptionPreviewCard{
+  border: 2px solid rgb(255, 255, 255);
+  transform: rotate(-5deg);
+  background-color: #036B52;
+  color: white;
+  font-size: 0.7em;
+  margin-top: -30px;
+  padding: 8px 15px;
+  width: 110%;
+  height: 60px;
+  margin-left: -13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.cardAttributes{
+  background-color: white;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  margin-top: -20px;
+  padding: 35px 10px 10px 10px;
+  border-radius: 5px;
+}
+.lineAttribute{
+  padding: 3px;
+  background-color: #F0F2F5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  
+}
+.attrVal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  width: 35px;
+  text-align: center;
+  background-color: #023031;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.formTitle{
+  
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: 800;
+  color: #2FC18C;
+}
+
+.nameInput{
+  font-size: 0.8em;
+  font-weight: 500;  
+}
+.inputName{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+}
+
+.inputDescription{
+  padding: 5px;
+  margin: 5px 0;
+  font-size: 0.7em;
+  color: #052727;
+  width: 100%;
+  border: none;
+}
+
+.attInput{
+  
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.superTrunfo{
+  position: relative;
+}
+.superTrunfoImg{
+  filter: sepia(100%);
+  position: absolute;
+  width: 50%;
+  top:30px
+}
+.cardAttr{
+  width: 100%;
+  text-align: center;
+}
+.cardImage{
+  width: 100%;
+  padding: 2px;
+  font-size: 0.8em;
+  
+}
+.lbInputDescription{
+  width: 100%;
+  padding-left: 5px;
+}
+.lbInputRare{
+  text-align: center;
+  display: flex;
+  gap: 5px;
+}
+.lbCheckText{
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.lbInputImg{
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.checkText{
+  
+  display: flex;
+  gap: 5px;
+  
+}
+
+.lbInputSav{
+  
+  display: flex;
+  justify-content: center;
+}
+.rareSuperTrunfo{
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+.saveButton{
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  
+  background-color: #2FC18C;
+  color: white;
+}
+.saveButton:disabled{
+  color: rgb(93, 91, 91);
+  background-color: gray;
+}
+
+.cardsList{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:10px;
+  margin-bottom: 20px;
+}
+.cardsList .cardPreviewContainer{
+  width: 100%;
+  
+
+}
+.cardsList .cardPreviewContainer .descriptionPreviewCard{
+font-size: 0.9em;
+padding: 12px;
+/* margin-left: -8px; */
+height: 80px;
+/* width: 110%; */
+transform: rotate(-3deg);
+}
+
+
+
+.card{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 370px;
+  align-self: center;
+
+}
+.deleteButton{
+  top:10px;
+    left:10px;
+  border-radius: 5px;
+  border:none;
+  padding: 5px;
+  background-color: rgb(84, 2, 2);
+  color: white;
+  position: absolute;
+}
+
+.normal{
+  background-color: #036B52;
+}
+.raro {
+  background-color: #030231;
+}
+.muitoRaro{
+  background-color: #98a300;
+}
+
+.srPhrase{
+  font-size: 0.4em;
+  color: red;
+  font-weight: 700;
+}
+
+.filterSection{
+  width: 100%;
+  max-width: 370px;
+  align-self: center;
+background-color: #031717; 
+border-radius: 5px;
+ color: white;
+ margin: 10px;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.filterNome{
+  display: flex;
+  flex-direction: column;
+  min-width: 33%;
+  align-items: center;
+  
+}
+
+.nameFilter{
+  width: 100%;
+}
+
+.filterRaridade{
+  min-width: 33%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+}
+.filterTrunfo{
+  font-size: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:10px;
+
+}
+.cardListTitle {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 48rem) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .filterSection{
+    justify-content: space-evenly;
+    max-width: unset;
+
+  }
+  .filterNome,.filterRaridade  {
+    flex-direction: row;
+    gap:10px
+  }
+  
+  #root div:first-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .headerLogo{
+    width: 100%;
+    max-width: 12rem;
+  }
+  main{
+    width: 100%;
+    max-width: 1000px;
+
+  }
+  .registerForm{ 
+    max-width: unset;
+    font-size: 1.5em;  
+    justify-content: space-evenly;
+  }
+  .inputName{
+    padding: 10px;
+  }
+  .cardPreviewContainer{
+    max-width:200px;
+    border: 2px solid black;
+    overflow: hidden;
+  }
+  .cardsList .cardPreviewContainer{
+    width: 100%;
+   max-width: 300px;
+  }
+  .cardRegister{
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: unset;
+    background-color: unset;
+    box-shadow: unset;
+  }
+  .descAtt{
+    flex-direction: column-reverse;
+    margin-bottom: 10px;
+  }
+  .cardsList{
+    padding: 10px;
+    background-color: rgb(220,220,220);
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: center;
+    gap:20px;
+    width: 100%;
+    
+  }
+  .cardAttributes{
+    padding-top: 30px;    
+  }
+  .imageCard{
+    margin-bottom: 30px;
+  }
+  .descriptionPreviewCard{
+    height: 60px;
+    margin-top: -60px;
+    margin-left: -15px;
+    font-size: 0.7em !important;
+    width: 120%;
+  }
+  .lbInputImg {
+    margin-bottom: 20px;
+  }
+  .lbInputRare{
+    width: 100%;
+  }
+  .checkText{
+    display: flex!important;
+    flex-direction: row!important;
+    align-items: center;
+    
+    height: 100%;
+    gap:10px;
+    
+  }
+  .rareSuperTrunfo{
+    justify-content: space-evenly;
+    gap: 10px;
+
+  }
+  .inputRare{
+    width: 100%;
+  }
+  .attrInputs{
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .deleteButton{    
+    top:17px;
+    left:16px;
+  }
+  
+  .card{
+    
+    padding: 5px;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+  }
 }

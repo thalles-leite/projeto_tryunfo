@@ -5,8 +5,8 @@ class Filter extends Component {
   render() {
     const { value, onChange, trunfoDisable } = this.props;
     return (
-      <>
-        <label>
+      <section className="filterSection">
+        <label className="filterNome">
           Nome:
           <input
             type="text"
@@ -14,9 +14,10 @@ class Filter extends Component {
             name="nameFilter"
             onChange={ onChange }
             disabled={ trunfoDisable }
+            className="nameFilter"
           />
         </label>
-        <label>
+        <label className="filterRaridade">
           Raridade:
           <select
             onChange={ onChange }
@@ -28,19 +29,19 @@ class Filter extends Component {
             <option value="todas">Todas</option>
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
-            <option value="muito raro">Muito raro</option>
+            <option value="muitoRaro">Muito raro</option>
           </select>
-          <label>
-            Super Trunfo
-            <input
-              type="checkbox"
-              data-testid="trunfo-filter"
-              onChange={ onChange }
-              name="trunfoFilter"
-            />
-          </label>
         </label>
-      </>
+        <label className="filterTrunfo">
+          <input
+            type="checkbox"
+            data-testid="trunfo-filter"
+            onChange={ onChange }
+            name="trunfoFilter"
+          />
+          Super Trunfo
+        </label>
+      </section>
     );
   }
 }

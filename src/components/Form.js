@@ -18,101 +18,137 @@ class Form extends Component {
       hasTrunfo,
     } = this.props;
     return (
-      <>
-        <label>
-          Nome:
+
+      <section className="registerForm">
+        <section className="formTitle">ADICIONE NOVA CARTA</section>
+        <label className="lbInputName">
+          <section className="nameInput">Nome:</section>
           <input
             type="text"
             data-testid="name-input"
             name="cardName"
             value={ cardName }
             onChange={ onInputChange }
+            className="inputName"
           />
         </label>
-        <label>
-          Descrição:
-          <textarea
-            data-testid="description-input"
-            name="cardDescription"
-            value={ cardDescription }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label>
-          attr1
-          <input
-            type="number"
-            data-testid="attr1-input"
-            name="cardAttr1"
-            value={ cardAttr1 }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label>
-          attr2
-          <input
-            type="number"
-            data-testid="attr2-input"
-            name="cardAttr2"
-            value={ cardAttr2 }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label>
-          attr3
-          <input
-            type="number"
-            data-testid="attr3-input"
-            name="cardAttr3"
-            value={ cardAttr3 }
-            onChange={ onInputChange }
-          />
-        </label>
-        <label>
-          Imagem
+        <section className="descAtt">
+          <section className="attrInputs">
+
+            <section className="attInput">
+              <section className="nameInput"> Attr01</section>
+              <input
+                type="number"
+                data-testid="attr1-input"
+                name="cardAttr1"
+                value={ cardAttr1 }
+                onChange={ onInputChange }
+                className="cardAttr"
+              />
+            </section>
+
+            <section className="attInput">
+
+              <section className="nameInput"> Attr02</section>
+              <input
+                type="number"
+                data-testid="attr2-input"
+                name="cardAttr2"
+                value={ cardAttr2 }
+                onChange={ onInputChange }
+                className="cardAttr"
+              />
+
+            </section>
+
+            <section className="attInput">
+              <section className="nameInput">  Attr03</section>
+              <input
+                type="number"
+                data-testid="attr3-input"
+                name="cardAttr3"
+                value={ cardAttr3 }
+                onChange={ onInputChange }
+                className="cardAttr"
+              />
+            </section>
+
+          </section>
+          <label className="lbInputDescription">
+            <section className="nameInput"> Descrição:</section>
+            <textarea
+              data-testid="description-input"
+              name="cardDescription"
+              value={ cardDescription }
+              onChange={ onInputChange }
+              rows="3"
+              maxLength={ 125 }
+              className="inputDescription"
+            />
+          </label>
+        </section>
+        <label className="lbInputImg">
+          <section className="nameInput">  Imagem: </section>
           <input
             type="text"
             data-testid="image-input"
             name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
+            className="cardImage"
           />
         </label>
-        <label>
-          Raridade
-          <select
-            data-testid="rare-input"
-            name="cardRare"
-            value={ cardRare }
-            onChange={ onInputChange }
-          >
-            <option value="normal">Normal</option>
-            <option value="raro">Raro</option>
-            <option value="muito raro">Muito Raro</option>
-          </select>
-        </label>
-        <label>
-          Super Trunfo?
-          {
-            !hasTrunfo ? <input
-              type="checkbox"
-              data-testid="trunfo-input"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
+        <section className="rareSuperTrunfo">
+          <label className="lbInputRare">
+            <section className="nameInput">  Raridade </section>
+            <select
+              data-testid="rare-input"
+              name="cardRare"
+              value={ cardRare }
               onChange={ onInputChange }
-            />
-              : <span>Você já tem um Super Trunfo em seu baralho</span>
-          }
-        </label>
-        <button
-          data-testid="save-button"
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-        >
-          Salvar
+              className="inputRare"
+            >
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muitoRaro">Muito Raro</option>
+            </select>
+          </label>
 
-        </button>
-      </>
+          <label className="lbCheckText">
+            { (!hasTrunfo)
+              ? (
+                <div className="checkText">
+                  <input
+                    type="checkbox"
+                    data-testid="trunfo-input"
+                    name="cardTrunfo"
+                    checked={ cardTrunfo }
+                    onChange={ onInputChange }
+                  />
+                  <section> Super Trunfo?</section>
+
+                </div>)
+              : (
+                <span className="srPhrase">
+                  Você já tem um Super Trunfo em seu baralho
+                </span>)}
+          </label>
+          <section className="lbInputSav">
+
+            <button
+              data-testid="save-button"
+              disabled={ isSaveButtonDisabled }
+              onClick={ onSaveButtonClick }
+              className="saveButton"
+            >
+              Salvar
+
+            </button>
+
+          </section>
+
+        </section>
+      </section>
     );
   }
 }
