@@ -44,11 +44,40 @@ https://github.com/thalles-leite/projeto_tryunfo/assets/49620303/984ae61e-67b0-4
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
 
-
 ## :rocket: Rodando localmente
 
-Clone o repositório: git clone https://github.com/seu-usuario/nome-do-repositorio.git
-Abra o arquivo "index.html" no navegador web.
+Clone o projeto
+
+```bash
+  git clone https://github.com/thalles-leite/projeto_tryunfo.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd projeto_tryunfo
+```
+
+Instale as dependências
+
+```bash
+  npm install
+```
+
+Inicie o servidor
+
+```bash
+  npm run start
+```
+
+
+## :test_tube: Rodando os testes
+
+Para rodar os testes, rode o seguinte comando
+
+```bash
+  npm run test
+```
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/PORTIFÓLIO-000)](https://thalles-leite.vercel.app/)
